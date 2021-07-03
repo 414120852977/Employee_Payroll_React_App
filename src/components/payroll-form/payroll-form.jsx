@@ -3,9 +3,10 @@ import profile1 from '../../assets/profile-images/Ellipse -3.png';
 import profile2 from '../../assets/profile-images/Ellipse -1.png';
 import profile3 from '../../assets/profile-images/Ellipse -8.png';
 import profile4 from '../../assets/profile-images/Ellipse -7.png';
-import './payroll-form.scss';
+import   './payroll-form.scss';
  import logo from '../../assets/icons/logo.png'
  import { useParams, Link, withRouter } from 'react-router-dom';
+ import employeeService from '../../services/employee-service';
 
 const PayrollForm = (props) => {
     let initialValue = {
@@ -99,6 +100,28 @@ const PayrollForm = (props) => {
 
     const save = async (event) => {
         event.preventDefault();
+        console.log("save");
+        if(await validData()) {
+            console.log('error', formValue);
+            return;
+        }
+        let object = {
+            name: formValue.name,
+            departmentValue:formValue.departmentValue,
+            gender: formValue.gender,
+            salary: formValue.salary,
+            startDate:` ${formValue.day} ${formValue.month}  ${formValue.year}`,
+            notes: formValue.notes,
+            id:'',
+            profileUrl: formValue.profileUrl,
+        }
+        employeeService.addEmployee(object).then(data =>{
+            console.log("Data added");
+            props.history.push('')
+        }).catch(err =>{
+            console.log("error while");
+        })
+        
     }
     const reset =() => {
         setForm({...initialValue, id: formValue.id, isUpdate: formValue.isUpdate});
@@ -124,26 +147,26 @@ const PayrollForm = (props) => {
                         <div className = "form-head" >Employee Pay Roll form</div>
                         <div className = "row">
                             <label className="label text" htmlFor="name">Name</label>
-                            <input  className = "input" type="text" id = "name" name = "name"  onchange={changeValue} placeholder="your name"></input>
+                            <input  className = "input" type="text" id = "name"  name = "name" value = {formValue.name}  onChange={changeValue} placeholder="your name"/>
                        </div>
                        <div className = "error"> {formValue.error.name}</div>
                        <div className = "row">
                            <label className= "label text" htmlFor = "profileUrl">Profile image</label>
                            <div className="profile-radio-button">
                                <label>
-                                    <input type = "radio" getChecked = {formValue.profileUrl='../../assets/profile-images/Ellipse -3.png'} name ="profileUrl"   onChange = {changeValue}/>
+                                    <input type = "radio" getchecked = {formValue.profileUrl='../../assets/profile-images/Ellipse -3.png'} name ="profileUrl"   onChange = {changeValue}/>
                                     <img className="profile" src = {profile1} />
                                  </label>
                                  <label>
-                                    <input type = "radio" getChecked = {formValue.profileUrl='../../assets/profile-images/Ellipse -1.png'} name ="profileUrl" value = "../../assets/profile-images/Ellipse -3.png"  onChange = {changeValue}/>
+                                    <input type = "radio" getchecked = {formValue.profileUrl='../../assets/profile-images/Ellipse -1.png'} name ="profileUrl" value = "../../assets/profile-images/Ellipse -3.png"  onChange = {changeValue}/>
                                     <img className="profile" src = {profile2} />
                                  </label>
                                  <label>
-                                    <input type = "radio" getChecked = {formValue.profileUrl='../../assets/profile-images/Ellipse -8.png'} name ="profileUrl" value = "../../assets/profile-images/Ellipse -3.png"  onChange = {changeValue}/>
+                                    <input type = "radio" getchecked = {formValue.profileUrl='../../assets/profile-images/Ellipse -8.png'} name ="profileUrl" value = "../../assets/profile-images/Ellipse -3.png"  onChange = {changeValue}/>
                                     <img className="profile" src = {profile3} />
                                  </label>
                                  <label>
-                                    <input type = "radio" getChecked = {formValue.profileUrl='../../assets/profile-images/Ellipse -7.png'} name ="profileUrl" value = "../../assets/profile-images/Ellipse -3.png"  onChange = {changeValue}/>
+                                    <input type = "radio" getchecked = {formValue.profileUrl='../../assets/profile-images/Ellipse -7.png'} name ="profileUrl" value = "../../assets/profile-images/Ellipse -3.png"  onChange = {changeValue}/>
                                     <img className="profile" src = {profile4} />
                                  </label>
                                  </div>
@@ -177,27 +200,27 @@ const PayrollForm = (props) => {
 
                                             <div className = "row">
                                                 <label className="label text" htmlFor="salry">Salary</label>
-                                                <input className = "input" type = "number" onchange={changeValue} id="salary"  name = "salary" placeholder="salary"/>
+                                                <input className = "input" type = "number" onChange={changeValue} id="salary"  name = "salary" placeholder="salary"/>
                                         </div>
                                                 <div className="error">{formValue.error.salary}</div>
 
                                                 <div className = "row">
                                                     <label className = "label text" htmlFor ="StartDate">Start Date</label>
-                                                    <select onchange = {changeValue} id="day" name= "day"> <option value ="1">1</option><option value ="2">2</option></select>
-                                                    <select onchange = {changeValue} id="month" name= "month"> <option value ="Jan">January</option><option value ="Feb">Februaury</option></select>
-                                                    <select onchange = {changeValue} id="year" name= "year"> <option value ="2020">2020</option></select>
+                                                    <select onChange = {changeValue} id="day" name= "day"> <option value ="1">1</option><option value ="2">2</option></select>
+                                                    <select onChange = {changeValue} id="month" name= "month"> <option value ="Jan">January</option><option value ="Feb">Februaury</option></select>
+                                                    <select onChange = {changeValue} id="year" name= "year"> <option value ="2020">2020</option></select>
                                                 </div>
                                                 <div className = "error"> {formValue.error.startDate}</div>
 
                                                 <div className = "row">
                                                     <label className = "label text" htmlFor="notes">Notes</label>
-                                                    <textarea onchange= {changeValue} id ="notes"  className="input" name="notes" placeholder="write Notes here" style={{height :'100%'}}></textarea> 
+                                                    <textarea onChange= {changeValue} id ="notes"  className="input" name="notes" placeholder="write Notes here" style={{height :'100%'}}></textarea> 
                                                     </div>
                                                     <div className = "buttonParent">
-                                                        <a routerLink="" className="resetButton button cancelButton">Cancel</a>
+                                                        <a routerlink="" className="resetButton button cancelButton">Cancel</a>
                                                         <div className="submit-reset">
                                                             <button type="submit" className="button submitButton">{formValue.isUpdate ? 'Update' : 'Submit'}</button>
-                                                            <button type="button" onclick={reset} className="resetButton button">Reset</button>
+                                                            <button type="button" onClick={reset} className="resetButton button">Reset</button>
                                                         </div>
                                                     </div>
                                 </form>
