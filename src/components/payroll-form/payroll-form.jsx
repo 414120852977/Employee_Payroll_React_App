@@ -100,7 +100,7 @@ const PayrollForm = (props) => {
 
     const save = async (event) => {
         event.preventDefault();
-        console.log("save");
+        console.alert("save");
         if(await validData()) {
             console.log('error', formValue);
             return;
@@ -116,10 +116,9 @@ const PayrollForm = (props) => {
             profileUrl: formValue.profileUrl,
         }
         employeeService.addEmployee(object).then(data =>{
-            console.log("Data added");
-            props.history.push('')
+            console.alert("Data added successfully");
         }).catch(err =>{
-            console.log("error while");
+            console.alert("error after data adding");
         })
         
     }
