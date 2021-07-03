@@ -6,7 +6,7 @@ import profile4 from '../../assets/profile-images/Ellipse -7.png';
 import   './payroll-form.scss';
  import logo from '../../assets/icons/logo.png'
  import { useParams, Link, withRouter } from 'react-router-dom';
- import employeeService from '../../services/employee-service';
+ import EmployeeService from '../../services/employee-service';
 
 const PayrollForm = (props) => {
     let initialValue = {
@@ -115,7 +115,8 @@ const PayrollForm = (props) => {
             id:'',
             profileUrl: formValue.profileUrl,
         }
-        employeeService.addEmployee(object).then(data =>{
+
+        EmployeeService.addEmployee(object).then(data =>{
             console.log("Data added");
             props.history.push('')
         }).catch(err =>{
