@@ -1,23 +1,23 @@
-
 import './App.css';
-import React from 'react';
-import PayrollForm from './components/payroll-form/payroll-form';
-
-// import react router
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PayrollForm from './components/payroll-form/payroll-form'
+import {BrowserRouter as Router , Switch, Route} from "react-router-dom";
+import HomePage from './components/homePage/homePage.jsx' 
 
 function App() {
   return (
     <div className="App">
-      <Router>
+    <Router>
       <Switch>
-        <Route exact path = "">
-        <PayrollForm/>
+        <Route exact path="/homePage" component={HomePage}>
+          {/* <HomePage /> */}
+        </Route>
+        <Route exact path="/payroll-form" component={PayrollForm}>
+       {/* <PayrollForm /> */}
         </Route>
       </Switch>
     </Router>
   </div>
   );
-
 }
+
 export default App;

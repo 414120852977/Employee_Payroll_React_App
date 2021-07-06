@@ -1,28 +1,77 @@
 {
-    "employee": [
-        {
-            "name":"Ashok",
-            "department": [
-                "Engineer"
-            ],
-            "gender":"male",
-            "salary":"50000",
-            "notes":"",
-            "id":1,
-            "profileUrl":"../../assets/profile-images/Ellipse -1.png"
-        },
-        {
-            
-            "name":"Virat",
-            "department": [
-                "HR"
-            ],
-            "gender":"male",
-            "salary":"40000",
-            "startDate":"1 Jan 2019",
-            "notes":"",
-            "id":2,
-            "profileUrl":"../../assets/profile-images/Ellipse -8.png"
-        }
-    ]
+  "employee": [
+    {
+      "name": "Ashok Mane",
+      "department": [
+        "Engineer"
+      ],
+      "gender": "male",
+      "salary": "300000",
+      "startDate": "1 Jan 2020",
+      "notes": "This is good for Ashok",
+      "profileUrl": "../../assets/profile-images/Ellipse -1.png",
+      "id": 1604589699568
+    },
+    {
+      "name": "Joe bidden",
+      "department": [
+        "Finance"
+      ],
+      "gender": "male",
+      "salary": "100000",
+      "startDate": "1 Jan 2020",
+      "notes": "president",
+      "profileUrl": "../../assets/profile-images/Ellipse -8.png",
+      "id": 1604589699569
+    },
+    {
+      "name": "Priya",
+      "department": [
+        "Sales",
+        "Finance"
+      ],
+      "gender": "female",
+      "salary": "40000",
+      "startDate": "1 Jan 2020",
+      "notes": "sales",
+      "profileUrl": "../../assets/profile-images/Ellipse -7.png",
+      "id": 1604589699570
+    },
+    {
+      "name": "Rajiv",
+      "department": [
+        "Sales"
+      ],
+      "gender": "male",
+      "salary": "250000",
+      "startDate": "  ",
+      "notes": "sales",
+      "profileUrl": "../../assets/profile-images/Ellipse -3.png",
+      "id": 1604589699571
+    },
+    {
+      "name": "Sanket",
+      "department": [
+        "HR"
+      ],
+      "gender": "male",
+      "salary": "450000",
+      "startDate": "day month year",
+      "notes": "HR",
+      "profileUrl": "../../assets/profile-images/Ellipse -8.png",
+      "id": 1604589699572
+    },
+    {
+      "name": "Gaju",
+      "department": [
+        "Others"
+      ],
+      "gender": "male",
+      "salary": "400000",
+      "startDate": "Day Month Year",
+      "notes": "smkjkjsk",
+      "profileUrl": "../../assets/profile-images/Ellipse -8.png",
+      "id": 1604589699573
+    }
+  ]
 }
