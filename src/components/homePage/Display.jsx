@@ -10,8 +10,22 @@ import profile4 from '../../assets/profile-images/Ellipse -7.png';
 
 import { withRouter } from 'react-router-dom';
 import { element } from 'prop-types';
+import EmployeeService from '../../services/employee-services';
+import { useHistory } from 'react-router-dom';
+const employeeService = new EmployeeService();
 
 const Display = (props) => {
+    
+    let history = useHistory();
+    const remove = (id) => {
+        employeeService.deleteEmployee(id).then(response =>{
+            alert("Employee deleted successfully",response.data);
+            history.push("/homePage")
+            
+        })
+        employeeService.getAllEmployees();
+        console.log("deleted");  
+   }
     return (  
         <div className="table-main"> 
         <table id="display" className="table">
@@ -36,8 +50,8 @@ const Display = (props) => {
                             <td>{element.salary}</td>
                             <td>{element.startDate}</td>
                             <td>
-                                <img src={deleteIcon} alt="Delete" />
-                                <img src={editIcon} alt="Edit" />
+                                <img  id = "element.name" onClick={() => remove(element.id)} src={deleteIcon} alt="Delete" />
+                                <img id = "element.name" onClick={() => update(element.id)} src={editIcon} alt="Edit" />
                             </td>    
                         </tr>
                     ))

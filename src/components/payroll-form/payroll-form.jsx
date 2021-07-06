@@ -7,10 +7,11 @@ import './payroll-form.scss';
 import ToolBar from '../toolbar';
 import { useParams, Link, withRouter } from 'react-router';
 import EmployeeService from '../../services/employee-services';
+import { useHistory } from 'react-router-dom';
 
 const employeeService = new EmployeeService();
 
-const PayrollForm = () => {
+const  PayrollForm = () => {
     let initialValue = {
         name: '',
         profileArray: [
@@ -103,8 +104,9 @@ const PayrollForm = () => {
         await setForm({ ...formValue, error: error })
         return isError;
     }
-
+    const history = useHistory();
     const save = async (event) => {
+    
         event.preventDefault();
         if (await validData()){
             console.log('error', formValue);
@@ -120,14 +122,13 @@ const PayrollForm = () => {
             profileUrl: formValue.profileUrl
         }
         employeeService.addEmployee(object).then(data => {
-            
             alert("Data Added sucessfully");
-            // this.props.history.push("/");
+             history.push("/homePage");
             reset();
             console.log("Data added");
             }).catch(err => {
                 alert("Error while adding");
-               
+                console.log("err while Add",err)
             })
 
     }
