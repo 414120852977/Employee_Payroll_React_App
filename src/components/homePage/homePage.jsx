@@ -23,9 +23,9 @@ class HomePage extends React.Component {
     
     employeeService = new EmployeeService();
     getAllEmployee = () => {
-        this.employeeService.getAllEmployees().then(data => {
-            console.log("data after get", data.data);
-            this.setState({ employeeArray: data.data })
+    this.employeeService.getAllEmployees().then(data => {
+            console.log("data after get", data.data.data);
+            this.setState({ employeeArray: data.data.data })
         }).catch(err => {
             console.log("err after", err);
         })
@@ -40,7 +40,7 @@ class HomePage extends React.Component {
                 <div className="header-content">
                     <div class="header-content sub-main-content">
                         <div class="emp-detail-text">
-                            Employee Details <div class="emp-count">0</div>
+                            Employee Details <div class="emp-count">{this.state.employeeArray.length}</div>
                         </div>
                         <div className="row button-box">
                         <div className="search-box">
